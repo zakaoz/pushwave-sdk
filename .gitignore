@@ -9,3 +9,5 @@ local.properties
 .dart_tool/
 .packages
 pubspec.lock
+.flutter-plugins
+.flutter-plugins-dependencies
