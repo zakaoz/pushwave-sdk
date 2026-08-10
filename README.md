@@ -82,6 +82,8 @@ PushWave.notifications.addClickListener((event) {
 2. **An app in the PushWave dashboard**, with the Firebase service account JSON
    pasted in. It hands you the app id.
 
+Version history and upgrade notes: [CHANGELOG.md](CHANGELOG.md).
+
 ## Releasing a version
 
 JitPack builds a tag on demand — nothing to publish by hand.

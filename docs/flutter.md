@@ -214,6 +214,22 @@ both and import them into the one PushWave app.
 
 ## Troubleshooting
 
+**`version solving failed` on firebase_messaging.**
+
+```
+Because pushwave_flutter depends on firebase_messaging ^15.1.5 and
+your_app depends on firebase_messaging ^16.5.0, version solving failed.
+```
+
+Fixed in **v0.1.1** — bump your `ref`. Before that the package pinned a caret
+range, which locks out any app on a newer major.
+
+Do not reach for `dependency_overrides` here. It forces a version past the
+solver rather than satisfying it, so pub stops checking compatibility at all,
+every app has to repeat the workaround, and the real problem stays hidden. A
+library should never pin its own dependency tightly; if you hit this against
+some other package, widening its range is the fix.
+
 **The device never appears under Devices.** Wrong app id or service URL, or
 `Firebase.initializeApp()` did not run before `PushWave.initialize()`. The
 console prints `PushWave: …` on failure.
