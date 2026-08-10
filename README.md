@@ -29,8 +29,11 @@ dependencyResolutionManagement {
 `app/build.gradle`:
 
 ```gradle
-implementation 'com.github.YOUR_GITHUB_USER.pushwave-sdk:pushwave-sdk:0.1.0'
+implementation 'com.github.zakaoz:pushwave-sdk:v0.1.0'
 ```
+
+The group is the GitHub owner and the version is the tag, both exactly as
+JitPack publishes them — note the leading `v`.
 
 `firebase-messaging` comes with it, so you do not declare it yourself. You do
 still need Firebase in the app: the `com.google.gms.google-services` plugin and
@@ -84,7 +87,7 @@ Then: `PushWave.setTag(k, v)` · `setExternalId(id)` · `setEnabled(false)` ·
 dependencies:
   pushwave_flutter:
     git:
-      url: https://github.com/YOUR_GITHUB_USER/pushwave-sdk.git
+      url: https://github.com/zakaoz/pushwave-sdk.git
       path: flutter/pushwave_flutter
       ref: v0.1.0
 ```
@@ -113,7 +116,7 @@ git tag v0.1.1 && git push origin v0.1.1
 ```
 
 The first request for a new tag takes a minute or two while JitPack builds it;
-watch `https://jitpack.io/#YOUR_GITHUB_USER/pushwave-sdk`. Apps then move by
+watch `https://jitpack.io/#zakaoz/pushwave-sdk`. Apps then move by
 bumping the version string.
 
 ## Layout
