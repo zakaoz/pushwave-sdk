@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <application>
+
+        <!--
+          Receives FCM data messages and renders them. Declared here so the host
+          app does not need its own FirebaseMessagingService: keeping exactly one
+          MESSAGING_EVENT service in the merged manifest avoids the ambiguity of
+          two services competing for the same broadcast.
+        -->
+        <service
+            android:name="com.pushwave.sdk.PushWaveMessagingService"
+            android:exported="false">
+            <intent-filter android:priority="1">
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <!--
+          Invisible landing point for a notification tap. It has to be an
+          Activity: since Android 12, a notification may not trampoline through
+          a broadcast receiver or a service to open the app.
+        -->
+        <activity
+            android:name="com.pushwave.sdk.PushWaveOpenActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
+            android:taskAffinity=""
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+    </application>
+
+</manifest>

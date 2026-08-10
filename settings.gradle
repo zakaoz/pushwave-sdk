@@ -1,0 +1,23 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+// The Gradle build lives at the repository root so JitPack finds it without
+// configuration. The Flutter package sits beside it under flutter/ and is
+// consumed as a git dependency, which needs no build here.
+rootProject.name = 'pushwave'
+
+include ':pushwave-sdk'
+project(':pushwave-sdk').projectDir = new File(rootDir, 'android/pushwave-sdk')

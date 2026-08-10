@@ -1,0 +1,7 @@
+# JitPack builds a tag on demand and serves the result as a Maven artifact.
+# AGP 8.13 needs a JDK 17 toolchain.
+jdk:
+  - openjdk17
+
+install:
+  - ./gradlew :pushwave-sdk:publishToMavenLocal -PPUBLISH_VERSION=$VERSION

@@ -1,0 +1,22 @@
+name: pushwave_flutter
+description: Flutter client for a self-hosted PushWave push notification service.
+version: 0.1.0
+publish_to: 'none'
+
+environment:
+  sdk: ^3.7.2
+  flutter: '>=3.22.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # The transport. PushWave sends through FCM, which relays to APNs on iOS, so
+  # one plugin covers both platforms.
+  firebase_messaging: ^15.1.5
+  # Deliberately the only extras: both are already in most apps, so adding this
+  # package pulls in nothing surprising.
+  http: ^1.2.0
+  shared_preferences: ^2.2.0
+
+dev_dependencies:
+  flutter_lints: ^5.0.0

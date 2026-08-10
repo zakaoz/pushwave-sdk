@@ -1,0 +1,56 @@
+plugins {
+    id 'com.android.library'
+    id 'maven-publish'
+}
+
+// JitPack passes the tag it is building as -PPUBLISH_VERSION; a local build
+// falls back to this default.
+def publishVersion = project.findProperty('PUBLISH_VERSION') ?: '0.1.0'
+
+android {
+    namespace 'com.pushwave.sdk'
+    compileSdk 35
+
+    defaultConfig {
+        minSdk 21
+        consumerProguardFiles 'consumer-rules.pro'
+        buildConfigField 'String', 'PUSHWAVE_SDK_VERSION', "\"${publishVersion}\""
+    }
+
+    buildFeatures {
+        buildConfig = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    publishing {
+        singleVariant('release') {
+            withSourcesJar()
+        }
+    }
+}
+
+// JitPack overrides the coordinates with the GitHub owner and tag, so these are
+// only what a local publishToMavenLocal produces.
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.pushwave'
+                artifactId = 'pushwave-sdk'
+                version = publishVersion
+            }
+        }
+    }
+}
+
+dependencies {
+    implementation 'androidx.core:core:1.13.1'
+    // The host app usually pins this through the Firebase BOM; Gradle resolves
+    // to whichever version is higher, so this only guarantees it is present.
+    api 'com.google.firebase:firebase-messaging:24.1.0'
+}
