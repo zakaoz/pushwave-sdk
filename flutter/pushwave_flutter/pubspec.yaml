@@ -12,7 +12,12 @@ dependencies:
     sdk: flutter
   # The transport. PushWave sends through FCM, which relays to APNs on iOS, so
   # one plugin covers both platforms.
-  firebase_messaging: ^15.1.5
+  #
+  # Deliberately wider than a caret range. A library that pins ^15.1.5 locks out
+  # every app already on 16.x, and the only APIs used here — FirebaseMessaging
+  # .instance, onMessage, onMessageOpenedApp, RemoteMessage — have been stable
+  # across those majors. The app's own constraint decides the actual version.
+  firebase_messaging: '>=15.1.5 <17.0.0'
   # Deliberately the only extras: both are already in most apps, so adding this
   # package pulls in nothing surprising.
   http: ^1.2.0

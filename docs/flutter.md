@@ -41,14 +41,15 @@ dependencies:
     git:
       url: https://github.com/zakaoz/pushwave-sdk.git
       path: flutter/pushwave_flutter
-      ref: v0.1.0
+      ref: v0.1.1
 ```
 
 `ref` pins a tag — leave it pinned so a new SDK release cannot change your app
 without you choosing it.
 
 Requires **Dart 3.7+** and **Flutter 3.22+**. `firebase_messaging` comes with the
-package.
+package, on a deliberately wide `>=15.1.5 <17.0.0` range so it cannot collide
+with the version your app already uses — your app's own constraint decides.
 
 ---
 

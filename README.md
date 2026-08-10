@@ -36,7 +36,7 @@ dependencyResolutionManagement {
 `app/build.gradle`:
 
 ```gradle
-implementation 'com.github.zakaoz:pushwave-sdk:v0.1.0'
+implementation 'com.github.zakaoz:pushwave-sdk:v0.1.1'
 ```
 
 The group is the GitHub owner and the version is the tag — note the leading `v`.
@@ -59,7 +59,7 @@ dependencies:
     git:
       url: https://github.com/zakaoz/pushwave-sdk.git
       path: flutter/pushwave_flutter
-      ref: v0.1.0
+      ref: v0.1.1
 ```
 
 ```dart

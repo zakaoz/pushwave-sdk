@@ -53,7 +53,7 @@ dependencyResolutionManagement {
 `app/build.gradle`:
 
 ```gradle
-implementation 'com.github.zakaoz:pushwave-sdk:v0.1.0'
+implementation 'com.github.zakaoz:pushwave-sdk:v0.1.1'
 ```
 
 `firebase-messaging` arrives with it — do not declare it yourself. If your app
